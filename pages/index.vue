@@ -10,7 +10,6 @@ import { ViewPlugin }           from "@baklavajs/plugin-renderer-vue"
 import { Engine }               from "@baklavajs/plugin-engine"
 import { InterfaceTypePlugin }  from "@baklavajs/plugin-interface-types"
 import { OptionPlugin }         from "@baklavajs/plugin-options-vue"
-import { OutputNode } from '@/components/node/OutputNode.ts'
 import { MathNode } from '@/components/node/MathNode'
 import { DisplayNode } from '@/components/node/DisplayNode'
 
@@ -30,7 +29,6 @@ export default {
       this.viewPlugin.enableMinimap = true;
 
     // add node to editor
-    this.editor.registerNodeType("OutputNode", OutputNode)
     this.editor.registerNodeType('MathNode', MathNode)
     this.editor.registerNodeType('DisplayNode', DisplayNode)   
     },
