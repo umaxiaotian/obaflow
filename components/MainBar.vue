@@ -1,11 +1,7 @@
 
 <template>
-
     <div class="glass_bar">
-
-
-
-        <div class="d-flex flex-column flex-shrink-0" style="width: 4.5rem;">
+        <div class="d-flex flex-column flex-shrink-0 " style="width: 4.5rem;">
             <a href="/" class="d-block p-3 link-dark text-decoration-none " title="" data-bs-toggle="tooltip"
                 data-bs-placement="right" data-bs-original-title="Icon-only">
 
@@ -20,7 +16,7 @@
                 <li class="nav-item">
                     <a href="#" class="nav-link active py-3 " aria-current="page" title=""
                         data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
-                        <svg width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
+                        <svg width="24"   height="24" xmlns="http://www.w3.org/2000/svg" 
                             class="bi bi-arrow-down-right-circle-fill" viewBox="0 0 16 16">
                             <path
                                 d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm5.904-2.803a.5.5 0 1 0-.707.707L9.293 10H6.525a.5.5 0 0 0 0 1H10.5a.5.5 0 0 0 .5-.5V6.525a.5.5 0 0 0-1 0v2.768L5.904 5.197z" />
@@ -85,11 +81,13 @@
                 </ul>
             </div>
         </div>
-
-
     </div>
 </template>
 <style scoped>
+.target {
+  color: red;
+  border-bottom: 1px solid currentColor; /* color で指定している色が適応される */
+}
 .glass_bar {
 
     position: absolute;
@@ -118,3 +116,4 @@
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 </style>
+<script>
