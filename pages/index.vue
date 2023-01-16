@@ -1,4 +1,5 @@
 <template>
+
   <div style="width:100vw;height:100vh">
     <hint-overlay />
       <baklava-editor :plugin="viewPlugin"></baklava-editor>
