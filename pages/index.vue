@@ -1,6 +1,7 @@
 <template>
-
-  <div style="width:100vw;height:100vh">
+   
+  <div style="width:100vw;height:100vh"> 
+    <MainBar />
     <hint-overlay />
       <baklava-editor :plugin="viewPlugin"></baklava-editor>
   </div>
@@ -17,8 +18,9 @@ import { MathNode } from '@/components/node/MathNode'
 import { DisplayNode } from '@/components/node/DisplayNode'
 import { ButtonNode } from '@/components/node/ButtonNode'
 import ButtonOption from "@/components/ButtonOption.vue";
+import MainBar from "@/components/MainBar";
 export default {
-  components: { HintOverlay },
+  components: { HintOverlay,MainBar },
     data: () => ({
         editor: new Editor(),
         viewPlugin: new ViewPlugin(),

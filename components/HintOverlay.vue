@@ -13,7 +13,7 @@
 .hint {
     position: absolute;
     top: 1rem;
-    left: 1rem;
+    left: 9rem;
     z-index: 5;
     padding: 1rem;
     color: white;
