@@ -7,42 +7,45 @@
 </template>
 
 <script>
-import { Editor, NodeBuilder } from "@baklavajs/core"
+import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
-import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
-import { TaskNode,ButtonNode } from '@/components/NodeComponents'
+import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
+import { PlayNode, ButtonNode, CopyTaskNode,MathNode,DisplayNode } from '@/components/NodeComponents'
 import { useWinBox } from 'vue-winbox'
 import ButtonOption from "@/components/ButtonOption.vue";
 import MainBar from "@/components/MainBar";
 import HintOverlay from "@/components/HintOverlay.vue";
 
-
 export default {
   components: { HintOverlay, MainBar },
-  data: () => ({
-    editor: new Editor(),
-    viewPlugin: new ViewPlugin(),
-    engine: new Engine(true),
-    intfTypePlugin: new InterfaceTypePlugin(),
-
-    options: {
-      title: 'テストウィンドウ',
+  data() {
+    return {
+      editor: new Editor(),
+      viewPlugin: new ViewPlugin(),
+      engine: new Engine(true),
+      intfTypePlugin: new InterfaceTypePlugin(),
+      options: {
+        title: 'テストウィンドウ',
+      }
     }
-  }),
+  },
   created() {
     this.editor.use(this.viewPlugin);
-    this.editor.use(this.engine)
+    this.editor.use(this.engine);
     this.editor.use(new OptionPlugin())
     this.editor.use(this.intfTypePlugin)
-    this.intfTypePlugin.addType("number", "#00FF00");
     this.viewPlugin.enableMinimap = true;
     this.viewPlugin.registerOption("ButtonOption", ButtonOption);
 
     // add node to editor
-    this.editor.registerNodeType("ButtonNode", ButtonNode)
-    this.editor.registerNodeType("TaskNode", TaskNode)
+    this.editor.registerNodeType("ButtonNode", ButtonNode, 'Custom')
+    this.editor.registerNodeType("PlayNode", PlayNode, 'Play')
+    this.editor.registerNodeType("CopyTask", CopyTaskNode, 'Tasks')
+    this.editor.registerNodeType("MathNode", MathNode);
+        this.editor.registerNodeType("DisplayNode", DisplayNode);
+
     // add some nodes so the screen is not empty on startup
     // const node1 = this.addNodeWithCoordinates(MathNode, 100, 140);
     //     const node2 = this.addNodeWithCoordinates(DisplayNode, 400, 140);
@@ -63,7 +66,7 @@ export default {
     //   title: 'テストウィンドウ',
     //   url: "/welcome",
     //   background: "#454545",
-    
+
     //   max: false,
     //   min: false,
     //   hidden: false,
@@ -96,7 +99,7 @@ export default {
 
 
     // const winboxs = createWindow({
-      
+
     //   title: 'テストウィンドウ',
     //   url: "/welcome",
     //   background: "#454545",
