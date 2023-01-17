@@ -63,12 +63,72 @@ export default {
   mounted() {
     const createWindow = useWinBox()
     const winbox = createWindow({
-      title: 'テストウィンドウ',
-      url: "/",
 
+      title: 'テストウィンドウ',
+      url: "/welcome",
+      background: "#454545",
+    
+      max: false,
+      min: false,
+      hidden: false,
+      border:1,
+      width: 640,//windowの横幅
+      height: "70%",//windowの縦幅
       // position:
       x: "center",
       y: "center",
+      onfocus: function () {
+        //windowにフォーカスが当たった時の処理
+        this.setBackground("#00aa00");//バーの色を緑にする
+      },
+      onblur: function () {
+        //windowからフォーカスが外れた時の処理
+        this.setBackground("#999");//バーの色をグレーにする
+      },
+      onclose: function () {
+        //windowを閉じる時の処理
+        if (confirm("ウィンドウを閉じてもよろしいでしょうか?")) {
+          return false;
+        };
+        return true;
+      },
+    });
+
+
+
+
+
+
+    const winboxs = createWindow({
+      
+      title: 'テストウィンドウ',
+      url: "/welcome",
+      background: "#454545",
+  
+      max: false,
+      min: false,
+      hidden: false,
+      width: 640,//windowの横幅
+      border:1,
+    height: "70%",//windowの縦幅
+      // position:
+      x: "center",
+      y: "center",
+      onfocus: function(){
+      //windowにフォーカスが当たった時の処理
+      this.setBackground("#00aa00");//バーの色を緑にする
+    },
+    onblur: function(){
+      //windowからフォーカスが外れた時の処理
+      this.setBackground("#999");//バーの色をグレーにする
+    },
+    onclose: function(){
+      //windowを閉じる時の処理
+      if( confirm("ウィンドウを閉じてもよろしいでしょうか?") ) {
+        return false;
+      };
+      return true;
+    },
     })
 
 
