@@ -7,18 +7,16 @@
 </template>
 
 <script>
-import HintOverlay from "@/components/HintOverlay.vue";
 import { Editor, NodeBuilder } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
-import { MathNode } from '@/components/node/MathNode'
-import { DisplayNode } from '@/components/node/DisplayNode'
-import { ButtonNode } from '@/components/node/ButtonNode'
+import { TaskNode,ButtonNode } from '@/components/NodeComponents'
+import { useWinBox } from 'vue-winbox'
 import ButtonOption from "@/components/ButtonOption.vue";
 import MainBar from "@/components/MainBar";
-import { useWinBox } from 'vue-winbox'
+import HintOverlay from "@/components/HintOverlay.vue";
 
 
 export default {
@@ -43,10 +41,8 @@ export default {
     this.viewPlugin.registerOption("ButtonOption", ButtonOption);
 
     // add node to editor
-    this.editor.registerNodeType('MathNode', MathNode)
-    this.editor.registerNodeType('DisplayNode', DisplayNode)
     this.editor.registerNodeType("ButtonNode", ButtonNode)
-
+    this.editor.registerNodeType("TaskNode", TaskNode)
     // add some nodes so the screen is not empty on startup
     // const node1 = this.addNodeWithCoordinates(MathNode, 100, 140);
     //     const node2 = this.addNodeWithCoordinates(DisplayNode, 400, 140);
@@ -61,75 +57,71 @@ export default {
 
   },
   mounted() {
-    const createWindow = useWinBox()
-    const winbox = createWindow({
+    // const createWindow = useWinBox()
+    // const winbox = createWindow({
 
-      title: 'テストウィンドウ',
-      url: "/welcome",
-      background: "#454545",
+    //   title: 'テストウィンドウ',
+    //   url: "/welcome",
+    //   background: "#454545",
     
-      max: false,
-      min: false,
-      hidden: false,
-      border:1,
-      width: 640,//windowの横幅
-      height: "70%",//windowの縦幅
-      // position:
-      x: "center",
-      y: "center",
-      onfocus: function () {
-        //windowにフォーカスが当たった時の処理
-        this.setBackground("#00aa00");//バーの色を緑にする
-      },
-      onblur: function () {
-        //windowからフォーカスが外れた時の処理
-        this.setBackground("#999");//バーの色をグレーにする
-      },
-      onclose: function () {
-        //windowを閉じる時の処理
-        if (confirm("ウィンドウを閉じてもよろしいでしょうか?")) {
-          return false;
-        };
-        return true;
-      },
-    });
+    //   max: false,
+    //   min: false,
+    //   hidden: false,
+    //   border:1,
+    //   width: 640,//windowの横幅
+    //   height: "70%",//windowの縦幅
+    //   // position:
+    //   x: "center",
+    //   y: "center",
+    //   onfocus: function () {
+    //     //windowにフォーカスが当たった時の処理
+    //     this.setBackground("#00aa00");//バーの色を緑にする
+    //   },
+    //   onblur: function () {
+    //     //windowからフォーカスが外れた時の処理
+    //     this.setBackground("#999");//バーの色をグレーにする
+    //   },
+    //   onclose: function () {
+    //     //windowを閉じる時の処理
+    //     if (confirm("ウィンドウを閉じてもよろしいでしょうか?")) {
+    //       return false;
+    //     };
+    //     return true;
+    //   },
+    // });
 
 
 
 
 
 
-    const winboxs = createWindow({
+    // const winboxs = createWindow({
       
-      title: 'テストウィンドウ',
-      url: "/welcome",
-      background: "#454545",
-  
-      max: false,
-      min: false,
-      hidden: false,
-      width: 640,//windowの横幅
-      border:1,
-    height: "70%",//windowの縦幅
-      // position:
-      x: "center",
-      y: "center",
-      onfocus: function(){
-      //windowにフォーカスが当たった時の処理
-      this.setBackground("#00aa00");//バーの色を緑にする
-    },
-    onblur: function(){
-      //windowからフォーカスが外れた時の処理
-      this.setBackground("#999");//バーの色をグレーにする
-    },
-    onclose: function(){
-      //windowを閉じる時の処理
-      if( confirm("ウィンドウを閉じてもよろしいでしょうか?") ) {
-        return false;
-      };
-      return true;
-    },
-    })
+    //   title: 'テストウィンドウ',
+    //   url: "/welcome",
+    //   background: "#454545",
+    //   width: 640,//windowの横幅
+    //   border:1,
+    // height: "70%",//windowの縦幅
+    //   // position:
+    //   x: "center",
+    //   y: "center",
+    //   onfocus: function(){
+    //   //windowにフォーカスが当たった時の処理
+    //   this.setBackground("#00aa00");//バーの色を緑にする
+    // },
+    // onblur: function(){
+    //   //windowからフォーカスが外れた時の処理
+    //   this.setBackground("#999");//バーの色をグレーにする
+    // },
+    // onclose: function(){
+    //   //windowを閉じる時の処理
+    //   if( confirm("ウィンドウを閉じてもよろしいでしょうか?") ) {
+    //     return false;
+    //   };
+    //   return true;
+    // },
+    // }).removeControl("wb-max").removeControl("wb-full");
 
 
   },
