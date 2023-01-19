@@ -66,23 +66,23 @@
             </ul>
             <div class="dropdown border-top">
                 <a href="#"
-                    class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle"
-                    id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
-                    <img src="https://github.com/mdo.png" alt="mdo" width="24" height="24" class="rounded-circle">
+                    class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none "
+                    id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false" >
+                    <img src="@/assets/image/avater.png" alt="mdo" width="45" height="45" style="background-color: white;" class="rounded-circle">
                 </a>
-                <ul class="dropdown-menu text-small shadow" aria-labelledby="dropdownUser3">
-                    <li><a class="dropdown-item" href="#">New project...</a></li>
-                    <li><a class="dropdown-item" href="#">Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                <ul class="dropdown-menu text-small shadow "  aria-labelledby="dropdownUser3">
+                    <li><a class="dropdown-item" href="#">プロフィール編集</a></li>
+                    <li><a class="dropdown-item" href="#">設定</a></li>
                     <li>
                         <hr class="dropdown-divider">
                     </li>
-                    <li><a class="dropdown-item" href="#">Sign out</a></li>
+                    <li><a class="dropdown-item" href="#">ログアウト</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </template>
+
 <style scoped>
 .target {
   color: red;
@@ -105,3 +105,11 @@
 }
 </style>
 
+<script>
+import { Toast } from 'bootstrap';
+
+export default {
+    name: 'BootstrapToast',
+
+};
+</script>
