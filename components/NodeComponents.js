@@ -27,22 +27,20 @@ export class PlayNode extends Node {
  * CopyTaskNode
  * @constructor
  */
-export class CopyTaskNode extends Node {
-    constructor() {
-        super();
-        this.type = "CopyTaskNode";
-        this.name = "CopyTas";
-        this.addInputInterface("Task", "InputOption");
-        this.addInputInterface("Number 2", "InputOption");
-        this.addOutputInterface("Result");
-    }
 
-    calculate() {
-        const n1 = this.getInterface("Number 1").value;
-        const n2 = this.getInterface("Number 2").value;
-
-    }
-}
+export const CopyTaskNode = new NodeBuilder("CopyTaskNode")
+    .setName("CopyTask")
+    .addInputInterface("Play")
+    .addOption("ValueText", "TextOption")
+    .addOption('ローカルファイルパス', 'InputOption')
+    .addOption('アップロード先パス', 'InputOption')
+    .addOption('CHMOD', 'InputOption')
+    .addOption('ファイル所有者名', 'InputOption')
+    .onCalculate(node => {
+        let value = node.getInterface("Play").value;
+        node.setOptionValue("ValueText", value);
+    })
+    .build();
 
 /**
  * ButtonNode

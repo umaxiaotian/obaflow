@@ -81,7 +81,7 @@ export default {
       },
       onclose: function () {
         //windowを閉じる時の処理
-        if (confirm("ウィンドウを閉じてもよろしいでしょうか?")) {
+        if (confirm("ウェルカムウィンドウを閉じますか?")) {
           return false;
         };
         return true;
