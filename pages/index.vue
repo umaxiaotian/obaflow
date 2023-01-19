@@ -61,9 +61,10 @@ export default {
   mounted() {
     //ライブラリ呼び出し
     const createWindow = useWinBox()
+    const getNowURL = window.location.href+'welcome';
     const welcome_window = createWindow({
       title: 'obaflowスタートページ',
-      url: "/welcome",
+      url: getNowURL,
       background: "#454545",
       width: 640,//windowの横幅
       border: 1,
