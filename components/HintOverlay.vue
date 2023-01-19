@@ -13,11 +13,10 @@
 .hint {
     position: absolute;
     top: 1rem;
-    left: 9rem;
+    left: 7rem;
     z-index: 5;
     padding: 1rem;
     color: white;
-    /* From https://css.glass */
     background: rgba(255, 255, 255, 0.2);
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
