@@ -12,7 +12,7 @@ import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
-import { PlayNode, ButtonNode, CopyTaskNode,MathNode,DisplayNode } from '@/components/NodeComponents'
+import { PlayNode, ButtonNode, CopyTaskNode,DebugNode } from '@/components/NodeComponents'
 import { useWinBox } from 'vue-winbox'
 import ButtonOption from "@/components/ButtonOption.vue";
 import MainBar from "@/components/MainBar";
@@ -43,8 +43,7 @@ export default {
     this.editor.registerNodeType("ButtonNode", ButtonNode, 'Custom')
     this.editor.registerNodeType("PlayNode", PlayNode, 'Play')
     this.editor.registerNodeType("CopyTask", CopyTaskNode, 'Tasks')
-    this.editor.registerNodeType("MathNode", MathNode);
-        this.editor.registerNodeType("DisplayNode", DisplayNode);
+        this.editor.registerNodeType("DebugNode", DebugNode);
 
     // add some nodes so the screen is not empty on startup
     // const node1 = this.addNodeWithCoordinates(MathNode, 100, 140);
