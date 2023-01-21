@@ -1,6 +1,6 @@
 <template>
   <div style="width:100vw;height:100vh">
-    <MainBar />
+    <MainBar @menuFunc='menuFunc' />
     <hint-overlay />
     <baklava-editor :plugin="viewPlugin"></baklava-editor>
   </div>
@@ -44,13 +44,13 @@ export default {
     this.editor.registerNodeType("PlayNode", PlayNode, 'Play')
     this.editor.registerNodeType("CopyTask", CopyTaskNode, 'Tasks')
     this.editor.registerNodeType("DebugNode", DebugNode);
-    
+
     // 接続チェック
     this.intfTypePlugin
-    .addType("number", "cyan")
-    .addType("string", "crimson")
-    .addType("boolean", "lightgreen")
-    .addType("any", "white")
+      .addType("number", "cyan")
+      .addType("string", "crimson")
+      .addType("boolean", "lightgreen")
+      .addType("any", "white")
     // .addConversion("number", "string", String)
     // .addConversion("number", "boolean", v => !!v)
     // .addConversion("number", "any", v => v)
@@ -95,6 +95,17 @@ export default {
     // }).removeControl("wb-max").removeControl("wb-full");
   },
   methods: {
+    menuFunc(event) {
+      switch (event) {
+        case 'saveEditorInfo':
+          let state = JSON.stringify(this.editor.save());
+          console.log( state);
+          break
+
+        default:
+          console.log('INVALID EVENT!!!')
+      }
+    }
 
   }
 }

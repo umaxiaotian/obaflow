@@ -7,24 +7,15 @@
                 <i class="bi bi-windows" style="font-size: 2.5rem; color: #009eff;"></i>
                 <span class="visually-hidden">Icon-only</span>
             </a>
-            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center" >
-                <li >
-                    <a href="#" class="nav-link py-3 active  mb-1" style="border: 1px solid rgba(255, 255, 255, 0.5);"  title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                        data-bs-original-title="Dashboard">
-                        <i class="bi bi-windows" style="font-size: 1.5rem; color: #ffff;"></i>
-                    </a>
-                </li>
-
-                <li v-for="menu in menuList" :key="menu">
-                    <a href="#" class='nav-link py-3 mb-1 ' :class="{ 'active':menu.isActive ===true }" style="border: 1px solid rgba(255, 255, 255, 0.5);" title="" data-bs-toggle="tooltip" data-bs-placement="right"
-                        data-bs-original-title="Dashboard">
+            <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+                <li v-for="menu in menuList">
+                    <div class='nav-link py-3 mb-1 ' :class="{ 'active': menu.isActive === true }" @click="menuClickFunc(menu.funcName)"
+                        style="border: 1px solid rgba(255, 255, 255, 0.5);" title="" data-bs-toggle="tooltip"
+                        data-bs-placement="right" data-bs-original-title="Dashboard">
                         <i :class="menu.iconClass" style="font-size: 1.5rem; color: #ffff;"></i>
-                    </a>
+                    </div>
                 </li>
-
-
             </ul>
-            
             <div class="dropdown border-top">
                 <a href="#" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none "
                     id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
@@ -45,6 +36,10 @@
 </template>
 
 <style scoped>
+.nav-link:hover {
+    background-color: #3598c2;
+}
+
 .nav-link.active {
     background-color: #174051;
 }
@@ -74,15 +69,26 @@
 
 <script>
 export default {
-    name: 'BootstrapToast',
+
     data() {
         return {
             menuList: {
-                'test': { iconClass: 'bi bi-apple',isActive:false, funcName: 'azarashi' }
-
-
+                'test': { iconClass: 'bi bi-apple', isActive: false, funcName: 'saveEditorInfo' }
             }
         }
     },
+    methods: {
+        menuClickFunc(event) {
+            // switch(event){
+            //     case 'saveEditorInfo':
+            //         this.menuList.test.isActive =true;
+            //     break
+
+            //     default:
+            //         console.log('INVALID EVENT!!!')
+            // }
+            this.$emit("menuFunc", event);
+        }
+    }
 };
 </script>
