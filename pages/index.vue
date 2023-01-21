@@ -1,6 +1,6 @@
 <template>
   <div style="width:100vw;height:100vh">
-    <MainBar :editor="editor"/>
+    <MainBar v-model="editor"/>
     <hint-overlay />
     <baklava-editor :plugin="viewPlugin"></baklava-editor>
   </div>
@@ -94,5 +94,19 @@ export default {
     //   },
     // }).removeControl("wb-max").removeControl("wb-full");
   },
+  methods: {
+    // menuFunc(event) {
+    //   switch (event) {
+    //     case 'saveEditorInfo':
+    //       let state = JSON.stringify(this.editor.save());
+    //       console.log( state);
+    //       break
+
+    //     default:
+    //       console.log('INVALID EVENT!!!')
+    //   }
+    // }
+
+  }
 }
 </script>

@@ -69,16 +69,32 @@
 
 <script>
 export default {
+    model: {
+        prop: "editor",
+        event: "change",
+    },
     props: {
-        editor:{
-            type:Object
+        editor: {
+            type: Object
         }
     },
+    computed: {
+        applyEditor: {
+            get() {
+                return this.editor;
+            },
+            set(newValue) {
+                this.$emit("change", newValue);
+            },
+        },
+    },
+
 
     data() {
         return {
             menuList: {
-                'test': { iconClass: 'bi bi-apple', isActive: false, funcName: 'saveEditorInfo' }
+                'test': { iconClass: 'bi bi-apple', isActive: false, funcName: 'saveEditorInfo' },
+                'open': { iconClass: 'bi bi-apple', isActive: false, funcName: 'openEditorInfo' }
             }
         }
     },
@@ -89,7 +105,11 @@ export default {
                 case 'saveEditorInfo':
                     let state = JSON.stringify(this.editor.save());
                     console.log(state);
-                    this.menuList.test.isActive=true;
+                    this.menuList.test.isActive = true;
+                    break
+                case 'openEditorInfo':
+                    state={"nodes":[{"type":"PlayNode","id":"node_16743204587472","name":"Play","options":[["Play名",null],["ユーザー切替有効",null],["実行ユーザー名",null],["ホスト群",null]],"state":{},"interfaces":[["Task",{"id":"ni_16743204587473","value":null}]],"position":{"x":336,"y":257},"width":200,"twoColumn":false,"customClasses":""},{"type":"DebugNode","id":"node_16743204652376","name":"DebugNode","options":[["ValueText",null]],"state":{},"interfaces":[["Probe",{"id":"ni_16743204652377","value":null}]],"position":{"x":687,"y":529},"width":200,"twoColumn":false,"customClasses":""},{"type":"DebugNode","id":"node_167432058424226","name":"DebugNode","options":[["ValueText",""]],"state":{},"interfaces":[["Probe",{"id":"ni_167432058424227","value":""}]],"position":{"x":731,"y":269},"width":200,"twoColumn":false,"customClasses":""}],"connections":[{"id":"167432046931911","from":"ni_16743204587473","to":"ni_16743204652377"}],"panning":{"x":-4,"y":0},"scaling":1};
+                    this.editor.load(state);
                     break
 
                 default:
