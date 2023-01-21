@@ -13,7 +13,7 @@ export class PlayNode extends Node {
         this.addOption('ユーザー切替有効', 'CheckboxOption')
         this.addOption('実行ユーザー名', 'InputOption')
         this.addOption('ホスト群', 'InputOption')
-        this.addOutputInterface("Task");
+        this.addOutputInterface("Task", { type: "string" });
     }
 
     calculate() {
@@ -30,7 +30,7 @@ export class PlayNode extends Node {
 
 export const CopyTaskNode = new NodeBuilder("CopyTaskNode")
     .setName("CopyTask")
-    .addInputInterface("Play")
+    .addInputInterface("Play", "NumberOption", 0, { type: "number" })
     .addOption("ValueText", "TextOption")
     .addOption('ローカルファイルパス', 'InputOption')
     .addOption('アップロード先パス', 'InputOption')
@@ -60,7 +60,7 @@ export const ButtonNode = new NodeBuilder("ButtonNode")
  */
 export const DebugNode = new NodeBuilder("DebugNode")
     .setName("DebugNode")
-    .addInputInterface("Probe")
+    .addInputInterface("Probe", "InputOption", "", { type: "string" })
     .addOption("ValueText", "TextOption")
     .onCalculate(n => {
         let value = n.getInterface("Probe").value;

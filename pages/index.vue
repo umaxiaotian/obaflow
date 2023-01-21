@@ -39,55 +39,60 @@ export default {
     this.viewPlugin.enableMinimap = true;
     this.viewPlugin.registerOption("ButtonOption", ButtonOption);
 
-    // add node to editor
+    // Nodeエディタへ登録
     this.editor.registerNodeType("ButtonNode", ButtonNode, 'Custom')
     this.editor.registerNodeType("PlayNode", PlayNode, 'Play')
     this.editor.registerNodeType("CopyTask", CopyTaskNode, 'Tasks')
     this.editor.registerNodeType("DebugNode", DebugNode);
-
-    // add some nodes so the screen is not empty on startup
-    // const node1 = this.addNodeWithCoordinates(MathNode, 100, 140);
-    //     const node2 = this.addNodeWithCoordinates(DisplayNode, 400, 140);
-    //     this.editor.addConnection(
-    //         node1.getInterface("Result"),
-    //         node2.getInterface("Value")
-    //     );
-
-    // this.addNodeWithCoordinates(ButtonNode, 500, 500);
-
-
-
+    
+    // 接続チェック
+    this.intfTypePlugin
+    .addType("number", "cyan")
+    .addType("string", "crimson")
+    .addType("boolean", "lightgreen")
+    .addType("any", "white")
+    // .addConversion("number", "string", String)
+    // .addConversion("number", "boolean", v => !!v)
+    // .addConversion("number", "any", v => v)
+    // .addConversion("string", "number", parseFloat)
+    // .addConversion("string", "any", v => v)
+    // .addConversion("boolean", "number", v => (v ? 1 : 0))
+    // .addConversion("boolean", "string", String)
+    // .addConversion("boolean", "any", v => v)
+    // .addConversion("any", "number", parseFloat)
+    // .addConversion("any", "string", String)
+    // .addConversion("any", "boolean", Boolean);
   },
   mounted() {
-    //ライブラリ呼び出し
-    const createWindow = useWinBox()
-    const getNowURL = window.location.href+'welcome';
-    const welcome_window = createWindow({
-      title: 'obaflowスタートページ',
-      url: getNowURL,
-      background: "#454545",
-      width: 640,//windowの横幅
-      border: 1,
-      height: "70%",//windowの縦幅
-      // position:
-      x: "center",
-      y: "center",
-      onfocus: function () {
-        //windowにフォーカスが当たった時の処理
-        this.setBackground("#0081f0");//バーの色を緑にする
-      },
-      onblur: function () {
-        //windowからフォーカスが外れた時の処理
-        this.setBackground("#999");//バーの色をグレーにする
-      },
-      onclose: function () {
-        //windowを閉じる時の処理
-        if (confirm("ウェルカムウィンドウを閉じますか?")) {
-          return false;
-        };
-        return true;
-      },
-    }).removeControl("wb-max").removeControl("wb-full");
+    // //ライブラリ呼び出し
+    // const createWindow = useWinBox()
+    // const getNowURL = window.location.href+'welcome';
+    // const welcome_window = createWindow({
+    //   title: 'obaflowスタートページ',
+    //   url: getNowURL,
+    //   background: "#454545",
+    //   width: 640,//windowの横幅
+    //   border: 1,
+    //   height: "70%",//windowの縦幅
+    //   // position:
+    //   x: "center",
+    //   y: "center",
+    //   onfocus: function () {
+    //     //windowにフォーカスが当たった時の処理
+    //     this.setBackground("#0081f0");//バーの色を緑にする
+    //   },
+    //   onblur: function () {
+    //     //windowからフォーカスが外れた時の処理
+    //     this.setBackground("#999");//バーの色をグレーにする
+    //   },
+    //   onclose: function () {
+    //     //windowを閉じる時の処理
+    //     if (confirm("ウェルカムウィンドウを閉じますか?")) {
+    //       return false;
+    //     };
+    //     return true;
+    //   },
+    // }).removeControl("wb-max").removeControl("wb-full");
   },
   methods: {
 
