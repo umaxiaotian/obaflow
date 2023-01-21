@@ -9,9 +9,9 @@
             </a>
             <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
                 <li v-for="menu in menuList">
-                    <div class='nav-link py-3 mb-1 ' :class="{ 'active': menu.isActive === true }" @click="menuClickFunc(menu.funcName)"
-                        style="border: 1px solid rgba(255, 255, 255, 0.5);" title="" data-bs-toggle="tooltip"
-                        data-bs-placement="right" data-bs-original-title="Dashboard">
+                    <div class='nav-link py-3 mb-1 ' :class="{ 'active': menu.isActive === true }"
+                        @click="menuClickFunc(menu.funcName)" style="border: 1px solid rgba(255, 255, 255, 0.5);"
+                        title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
                         <i :class="menu.iconClass" style="font-size: 1.5rem; color: #ffff;"></i>
                     </div>
                 </li>
@@ -69,6 +69,11 @@
 
 <script>
 export default {
+    props: {
+        editor:{
+            type:Object
+        }
+    },
 
     data() {
         return {
@@ -79,15 +84,17 @@ export default {
     },
     methods: {
         menuClickFunc(event) {
-            // switch(event){
-            //     case 'saveEditorInfo':
-            //         this.menuList.test.isActive =true;
-            //     break
+            switch (event) {
+                //SaveEvent発火
+                case 'saveEditorInfo':
+                    let state = JSON.stringify(this.editor.save());
+                    console.log(state);
+                    this.menuList.test.isActive=true;
+                    break
 
-            //     default:
-            //         console.log('INVALID EVENT!!!')
-            // }
-            this.$emit("menuFunc", event);
+                default:
+                    console.log('INVALID EVENT!!!')
+            }
         }
     }
 };
