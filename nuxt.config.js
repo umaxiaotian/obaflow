@@ -24,13 +24,16 @@ export default {
   },
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    "bootstrap/dist/css/bootstrap.min.css"
+    "bootstrap/dist/css/bootstrap.min.css",
+    "bootstrap-icons/font/bootstrap-icons.css"
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     {src: '@/plugins/baklava.client.js', ssr: false},
-    '@/plugins/vue-winbox.js'
+    {src:  '@/plugins/vue-winbox.js'},
+    { src: '~/plugins/bootstrap.client.js' },
+		{ src: '~/plugins/lazysizes.client.js' },
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
