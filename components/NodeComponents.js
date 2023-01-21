@@ -24,20 +24,20 @@ export class PlayNode extends Node {
 }
 
 /**
- * CopyTaskNode
+ * DataCopyNode
  * @constructor
  */
 
-export const CopyTaskNode = new NodeBuilder("CopyTaskNode")
-    .setName("CopyTask")
-    .addInputInterface("Play", "NumberOption", 0, { type: "number" })
+export const DataCopyNode = new NodeBuilder("DataCopyNode")
+    .setName("DataCopyNode")
+    .addInputInterface("Task", "NumberOption", 0, { type: "number" })
     .addOption("ValueText", "TextOption")
     .addOption('ローカルファイルパス', 'InputOption')
     .addOption('アップロード先パス', 'InputOption')
     .addOption('CHMOD', 'InputOption')
     .addOption('ファイル所有者名', 'InputOption')
     .onCalculate(node => {
-        let value = node.getInterface("Play").value;
+        let value = node.getInterface("Task").value;
         node.setOptionValue("ValueText", value);
     })
     .build();
