@@ -123,7 +123,7 @@ export default {
                     this.menuList.test.isActive = true;
                     break
                 case 'openEditorInfo':
-                    state = { "nodes": [{ "type": "DataCopyNode", "id": "node_16743213464480", "name": "DataCopyNode", "options": [["ValueText", ""], ["ローカルファイルパス", null], ["アップロード先パス", null], ["CHMOD", null], ["ファイル所有者名", null]], "state": {}, "interfaces": [["Play", { "id": "ni_16743213464481", "value": "" }]], "position": { "x": 560, "y": 312 }, "width": 200, "twoColumn": false, "customClasses": "" }, { "type": "PlayNode", "id": "node_16743213647492", "name": "Play", "options": [["Play名", null], ["ユーザー切替有効", null], ["実行ユーザー名", null], ["ホスト群", null]], "state": {}, "interfaces": [["Task", { "id": "ni_16743213647493", "value": null }]], "position": { "x": 247, "y": 323 }, "width": 200, "twoColumn": false, "customClasses": "" }], "connections": [], "panning": { "x": 0, "y": 0 }, "scaling": 1 };
+                    state = {"nodes":[{"type":"PlayNode","id":"node_16743905490660","name":"Play","options":[["Play名",null],["ユーザー切替有効",null],["実行ユーザー名",null],["ホスト群",null],["タスク上限",6]],"state":{},"interfaces":[["Task 0",{"id":"ni_16743905490661","value":""}]],"position":{"x":620,"y":189},"width":200,"twoColumn":false,"customClasses":""}],"connections":[],"panning":{"x":0,"y":0},"scaling":1}
                     this.editor.load(state);
                     break
 

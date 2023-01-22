@@ -38,7 +38,6 @@ export default {
     this.editor.use(this.intfTypePlugin)
     this.viewPlugin.enableMinimap = true;
     this.viewPlugin.registerOption("ButtonOption", ButtonOption);
-
     // Nodeエディタへ登録;
     this.editor.registerNodeType("ButtonNode", ButtonNode, 'Custom');
     this.editor.registerNodeType("PlayNode", PlayNode, 'Play');
