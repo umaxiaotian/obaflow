@@ -1,5 +1,5 @@
 # obaflow
-![スクリーン![スクリーンショット 2023-01-23 233841](https://user-images.githubusercontent.com/29545778/214067499-3459eead-e531-463d-a193-25abf4a16636.png)
+[スクリーンショット 2023-01-23 233841](https://user-images.githubusercontent.com/29545778/214067499-3459eead-e531-463d-a193-25abf4a16636.png)
 
 
 ## Build Setup
