@@ -1,6 +1,5 @@
 import { NodeBuilder, Node } from '@baklavajs/core'
 
-
 /**
  * ExecNode
  * ノード要素から受けとったデータを理解し成形します。
@@ -29,19 +28,43 @@ export class PlayNode extends Node {
     constructor() {
         super();
         this.type = "PlayNode";
-        this.name = "PlayBookMix";
-
+        this.name = "PlayRuleSetting";
+        this.addInputInterface('PLAY(IN)', '', '', { type: "number" });
+        this.addInputInterface("TASK(IN)", '', '', { type: "string" });
+        this.addOutputInterface("PLAY(OUT)", { type: 'number' })
         this.addOption('Play名', 'InputOption')
         this.addOption('ユーザー切替有効', 'CheckboxOption')
         this.addOption('実行ユーザー名', 'InputOption')
         this.addOption('ホスト群', 'InputOption')
-        this.addInputInterface('PLAY(IN)', '', '', { type: "number" });
-        this.addInputInterface("TASK(IN)", '', '', { type: "string" });
-        this.addOutputInterface("PLAY(OUT)", { type: 'number' })
-
-
     }
     calculate() {
+        const InputTasks = this.getInterface('TASK(IN)').value
+        const InputPlays = this.getInterface('PLAY(IN)').value
+        const PlayName = this.getOptionValue('Play名');
+        const UserBecome = this.getOptionValue('ユーザー切替有効')
+        const BecomeUserName = this.getOptionValue('実行ユーザー名');
+        const CreateTaskArray = [{
+            Type: "PLAY",
+            DataType: "PlayRule",
+            Param: {
+                PlayName: PlayName,
+                UserBecome: UserBecome,
+                BecomeUserName: BecomeUserName,
+                Tasks: InputTasks
+            }
+        }]
+        //受け取ったデータをドッキングする
+        let DockData = [];
+        if (InputPlays) {
+            //インプットデータがある場合、CONCATで配列同士を結合する
+            DockData = InputPlays.concat(CreateTaskArray);
+        } else {
+            //インプットデータがない場合自分のノードデータをダイレクトに格納する
+            DockData = CreateTaskArray;
+
+        }
+        //配列構文を出力する
+        this.getInterface('PLAY(OUT)').value = DockData;
     }
 }
 
@@ -70,8 +93,8 @@ export class DataCopyNode extends Node {
         const Owner = this.getOptionValue('ファイル所有者名');
         const InputTasks = this.getInterface('TASK').value;
         const CreateTaskArray = [{
-            Type: "TASK", 
-            DataType:"DataCopy",
+            Type: "TASK",
+            DataType: "DataCopy",
             Param: {
                 LocalFilePath: LocalFilePath,
                 UploadFilePath: UploadFilePath,
@@ -81,12 +104,12 @@ export class DataCopyNode extends Node {
         }]
         //受け取ったデータをドッキングする
         let DockData = [];
-        if(InputTasks){
+        if (InputTasks) {
             //インプットデータがある場合、CONCATで配列同士を結合する
             DockData = InputTasks.concat(CreateTaskArray);
-        }else{
+        } else {
             //インプットデータがない場合自分のノードデータをダイレクトに格納する
-            DockData =  CreateTaskArray;
+            DockData = CreateTaskArray;
 
         }
         //配列構文を出力する
@@ -112,10 +135,11 @@ export const ButtonNode = new NodeBuilder("ButtonNode")
  */
 export const DebugNode = new NodeBuilder("DebugNode")
     .setName("DebugNode")
-    .addInputInterface("Probe", "InputOption", "", { type: "string" })
+    .addInputInterface("Probe", "InputOption",)
     .addOption("ValueText", "TextOption")
     .onCalculate(n => {
         let value = n.getInterface("Probe").value;
+        console.log(value)
         n.setOptionValue("ValueText", value);
     })
     .build();
