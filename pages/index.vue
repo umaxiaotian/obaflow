@@ -12,7 +12,8 @@ import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"
 import { Engine } from "@baklavajs/plugin-engine"
 import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
-import { PlayNode, ButtonNode, DataCopyNode, DebugNode } from '@/components/NodeComponents'
+//NodeComponentからエントリしているコンポーネント一覧
+import { PlayNode, ButtonNode, DataCopyNode, DebugNode,ExecNode } from '@/components/NodeComponents'
 import { useWinBox } from 'vue-winbox'
 import ButtonOption from "@/components/ButtonOption.vue";
 import MainBar from "@/components/MainBar";
@@ -43,11 +44,14 @@ export default {
     this.editor.registerNodeType("PlayNode", PlayNode, 'Play');
     this.editor.registerNodeType("DataCopyNode", DataCopyNode, 'Tasks');
     this.editor.registerNodeType("DebugNode", DebugNode);
+    this.editor.registerNodeType("ExecNode", ExecNode);
+    
 
     // 接続チェック
     this.intfTypePlugin
       .addType("number", "cyan")
       .addType("string", "crimson")
+      .addType("inventry_host", "green")
       .addType("boolean", "lightgreen")
       .addType("any", "white")
     // .addConversion("number", "string", String)
@@ -63,12 +67,11 @@ export default {
     // .addConversion("any", "boolean", Boolean);
   },
   mounted() {
-    // //ライブラリ呼び出し
+    //ライブラリ呼び出し
     // const createWindow = useWinBox()
-    // const getNowURL = window.location.href+'welcome';
     // const welcome_window = createWindow({
     //   title: 'obaflowスタートページ',
-    //   url: getNowURL,
+    //   url: 'https://obaflow.umaxiaotian.com/welcome/',
     //   background: "#454545",
     //   width: 640,//windowの横幅
     //   border: 1,

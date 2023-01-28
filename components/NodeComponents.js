@@ -1,53 +1,47 @@
 import { NodeBuilder, Node } from '@baklavajs/core'
 
+
+/**
+ * ExecNode
+ * ノード要素から受けとったデータを理解し成形します。
+ * @constructor
+ */
+export class ExecNode extends Node {
+    constructor() {
+        super();
+        this.type = "ExecNode";
+        this.name = "ExecNode";
+        this.addOption("OUT-MSG", "TextOption")
+        this.addInputInterface('PLAY(IN)', '', '', { type: "number" });
+    }
+    calculate() {
+        const message = "PLAY(IN)を実行"
+        this.setOptionValue('OUT-MSG', message);
+    }
+}
+
 /**
  * PlayNode
+ * 各タスクをまとめ実行ユーザー、ホスト群を設定する
  * @constructor
  */
 export class PlayNode extends Node {
     constructor() {
         super();
         this.type = "PlayNode";
-        this.name = "Play";
-        this.count = 1;
+        this.name = "PlayBookMix";
 
         this.addOption('Play名', 'InputOption')
         this.addOption('ユーザー切替有効', 'CheckboxOption')
         this.addOption('実行ユーザー名', 'InputOption')
         this.addOption('ホスト群', 'InputOption')
-        this.addOption('タスク数', 'IntegerOption', this.count, '', {
-            min: 1, max: 100
-        })
+        this.addInputInterface('PLAY(IN)', '', '', { type: "number" });
+        this.addInputInterface("TASK(IN)", '', '', { type: "string" });
+        this.addOutputInterface("PLAY(OUT)", { type: 'number' })
+
 
     }
-    addType(count) {
-        this.addInputInterface("タスクスロット" + count, '', '', { type: "string" });
-
-    }
-    delType(count) {
-        this.removeInterface("タスクスロット" + count)
-    }
-
-
     calculate() {
-        this.addOutputInterface("PlayManager", { type: 'number' })
-        const maxTaskLimit = this.getOptionValue('タスク数');
-        for (let i = 0; i <= maxTaskLimit; i++) {
-            this.addType(i);
-        }
-        if (maxTaskLimit >= this.count) {
-            this.delType(maxTaskLimit)
-        }
-
-        // console.log(maxTaskLimit)
-        // const taskType='PlayTask';
-        // const playName= this.getOptionValue("Play名");
-        // const becomeUserFlg= this.getOptionValue("ユーザー切替有効");
-        // const becomeUserName= this.getOptionValue("実行ユーザー名");
-        // const inventryHost= this.getOptionValue("ホスト群");
-        // const propData={taskType:taskType,playName:playName,becomeUserFlg:becomeUserFlg,becomeUserName:becomeUserName,inventryHost:inventryHost}
-        // // console.log(propData)
-        // this.getInterface("Task").value = propData;
     }
 }
 
@@ -56,19 +50,49 @@ export class PlayNode extends Node {
  * @constructor
  */
 
-export const DataCopyNode = new NodeBuilder("DataCopyNode")
-    .setName("DataCopyNode")
-    .addOption("ValueText", "TextOption")
-    .addOption('ローカルファイルパス', 'InputOption')
-    .addOption('アップロード先パス', 'InputOption')
-    .addOption('CHMOD', 'InputOption')
-    .addOption('ファイル所有者名', 'InputOption')
-    .addOutputInterface("Task", { type: "string" })
-    .onCalculate(node => {
-        let value = node.getInterface("Task").value;
-        node.setOptionValue("ValueText", value);
-    })
-    .build();
+export class DataCopyNode extends Node {
+    constructor() {
+        super();
+        this.type = "DataCopyNode";
+        this.name = "DataCopy";
+        this.addInputInterface('TASK', '', '', { type: "string" })
+        this.addOption("ValueText", "TextOption")
+        this.addOption('ローカルファイルパス', 'InputOption')
+        this.addOption('アップロード先パス', 'InputOption')
+        this.addOption('CHMOD', 'InputOption')
+        this.addOutputInterface("Task", { type: "string" })
+        this.addOption('ファイル所有者名', 'InputOption')
+    }
+    calculate() {
+        const LocalFilePath = this.getOptionValue('ローカルファイルパス');
+        const UploadFilePath = this.getOptionValue('アップロード先パス');
+        const Permission = this.getOptionValue('CHMOD');
+        const Owner = this.getOptionValue('ファイル所有者名');
+        const InputTasks = this.getInterface('TASK').value;
+        const CreateTaskArray = [{
+            Type: "TASK", 
+            DataType:"DataCopy",
+            Param: {
+                LocalFilePath: LocalFilePath,
+                UploadFilePath: UploadFilePath,
+                Permission: Permission,
+                Owner: Owner
+            }
+        }]
+        //受け取ったデータをドッキングする
+        let DockData = [];
+        if(InputTasks){
+            //インプットデータがある場合、CONCATで配列同士を結合する
+            DockData = InputTasks.concat(CreateTaskArray);
+        }else{
+            //インプットデータがない場合自分のノードデータをダイレクトに格納する
+            DockData =  CreateTaskArray;
+
+        }
+        //配列構文を出力する
+        this.getInterface('Task').value = DockData;
+    }
+}
 
 /**
  * ButtonNode
