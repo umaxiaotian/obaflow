@@ -39,6 +39,7 @@ export class PlayNode extends Node {
         this.addOption('ユーザー切替有効', 'CheckboxOption')
         this.addOption('実行ユーザー名', 'InputOption')
         this.addOption('ホスト群', 'InputOption')
+        this.customClasses = "PlayRuleSettingNode";
     }
     calculate() {
         const InputTasks = this.getInterface('TASK(IN)').value
@@ -82,7 +83,6 @@ export class DataCopyNode extends Node {
         this.type = "DataCopyNode";
         this.name = "DataCopy";
         this.addInputInterface('TASK(IN)', '', '', { type: "string" })
-        this.addOption("ValueText", "TextOption")
         this.addOption('ローカルファイルパス', 'InputOption')
         this.addOption('アップロード先パス', 'InputOption')
         this.addOption('CHMOD', 'InputOption')

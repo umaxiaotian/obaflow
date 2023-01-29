@@ -12,6 +12,18 @@
   }
   background: rgb(139, 38, 20);
 }
+.PlayRuleSettingNode {
+  .__title{
+  background: rgb(13, 114, 161);
+  }
+  background: rgb(9, 67, 90);
+  .dark-input{
+    background-color:rgb(5, 50, 71);
+  }
+  .dark-checkbox .__checkmark-container{
+    background-color:rgb(5, 50, 71);
+  }
+}
 </style>
 <script>
 import { Editor } from "@baklavajs/core"
