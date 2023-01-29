@@ -5,7 +5,14 @@
     <baklava-editor :plugin="viewPlugin"></baklava-editor>
   </div>
 </template>
-
+<style lang="scss" >
+.ExecNode {
+  .__title{
+  background: rgb(245, 27, 27);
+  }
+  background: rgb(139, 38, 20);
+}
+</style>
 <script>
 import { Editor } from "@baklavajs/core"
 import { ViewPlugin } from "@baklavajs/plugin-renderer-vue"

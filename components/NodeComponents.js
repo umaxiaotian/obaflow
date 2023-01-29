@@ -12,10 +12,13 @@ export class ExecNode extends Node {
         this.name = "ExecNode";
         this.addOption("OUT-MSG", "TextOption")
         this.addInputInterface('PLAY(IN)', '', '', { type: "number" });
+        this.customClasses = "ExecNode";
     }
     calculate() {
         const message = "PLAY(IN)を実行"
         this.setOptionValue('OUT-MSG', message);
+        console.log(this.getInterface('PLAY(IN)').value)
+
     }
 }
 
@@ -78,12 +81,12 @@ export class DataCopyNode extends Node {
         super();
         this.type = "DataCopyNode";
         this.name = "DataCopy";
-        this.addInputInterface('TASK', '', '', { type: "string" })
+        this.addInputInterface('TASK(IN)', '', '', { type: "string" })
         this.addOption("ValueText", "TextOption")
         this.addOption('ローカルファイルパス', 'InputOption')
         this.addOption('アップロード先パス', 'InputOption')
         this.addOption('CHMOD', 'InputOption')
-        this.addOutputInterface("Task", { type: "string" })
+        this.addOutputInterface("TASK(OUT)", { type: "string" })
         this.addOption('ファイル所有者名', 'InputOption')
     }
     calculate() {
@@ -91,7 +94,7 @@ export class DataCopyNode extends Node {
         const UploadFilePath = this.getOptionValue('アップロード先パス');
         const Permission = this.getOptionValue('CHMOD');
         const Owner = this.getOptionValue('ファイル所有者名');
-        const InputTasks = this.getInterface('TASK').value;
+        const InputTasks = this.getInterface('TASK(IN)').value;
         const CreateTaskArray = [{
             Type: "TASK",
             DataType: "DataCopy",
@@ -113,7 +116,7 @@ export class DataCopyNode extends Node {
 
         }
         //配列構文を出力する
-        this.getInterface('Task').value = DockData;
+        this.getInterface('TASK(OUT)').value = DockData;
     }
 }
 
