@@ -19,6 +19,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "core-js": "^3.25.3",
+    "koa": "^2.14.1",
     "lazysizes": "^5.3.2",
     "nuxt": "^2.15.8",
     "vue": "^2.7.10",
