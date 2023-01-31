@@ -12,7 +12,7 @@
                     <a class='nav-link py-3  ' :class="{ 'active': menu.isActive === true }"
                         @click="menuClickFunc(menu.funcName)" data-bs-toggle="tooltip" data-bs-placement="right"
                         :title="menu.toolTipText">
-                        <i :class="menu.iconClass" style="font-size: 1.5rem; color: #ffff;"></i>
+                        <i :class="menu.iconClass" style="font-size: 1.9rem; color: #ffff;"></i>
                     </a>
                 </li>
             </div>
@@ -235,13 +235,6 @@
 
 .nav-link.active {
     background-color: #174051;
-}
-
-
-.target {
-    color: red;
-    border-bottom: 1px solid currentColor;
-    /* color で指定している色が適応される */
 }
 
 .glass_bar {

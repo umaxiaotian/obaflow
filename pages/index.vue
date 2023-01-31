@@ -1,5 +1,5 @@
 <template>
-  <v-app id="app">
+  <v-app>
   <div style="width:100vw;height:100vh">
     <MainBar v-model="editor"/>
     <hint-overlay />
