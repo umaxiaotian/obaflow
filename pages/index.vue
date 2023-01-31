@@ -25,6 +25,10 @@
   .dark-checkbox .__checkmark-container{
     background-color:rgb(5, 50, 71);
   }
+
+
+
+
 }
 </style>
 <script>

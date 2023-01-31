@@ -37,7 +37,7 @@
                 <v-card-title class="text-h5 blue ">
                     ファイル
                 </v-card-title>  <v-subheader>ファイル送信用</v-subheader>
-                <v-card-text style="height: 100%;">
+                <v-card-text class="box" style="height: 100%;">
                     <v-list subheader two-line flat>
                       
 
@@ -251,6 +251,35 @@
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
     border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+
+
+
+
+
+
+
+
+
+.box {
+    color: #2D3240;
+    overflow-y: scroll;
+    font-size: 23px;
+}
+
+.box::-webkit-scrollbar {
+    width: 14px;
+}
+
+.box::-webkit-scrollbar-track {
+    background-color: #000;
+    border-radius: 10px;
+}
+
+.box::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(135deg, #3C8CE7 10%, #00EAFF 100%);
+    border-radius: 10px;
 }
 </style>
 
