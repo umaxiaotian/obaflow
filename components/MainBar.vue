@@ -36,10 +36,10 @@
             <v-card>
                 <v-card-title class="text-h5 blue ">
                     ファイル
-                </v-card-title>  <v-subheader>ファイル送信用</v-subheader>
-                <v-card-text class="box" style="height: 100%;">
+                </v-card-title> <v-subheader>ファイル送信用</v-subheader>
+                <div class="box" style="height: 100%;">
                     <v-list subheader two-line flat>
-                      
+
 
                         <v-list-item-group v-model="settings" multiple>
                             <v-list-item>
@@ -215,7 +215,8 @@
                             </v-list-item>
                         </v-list-item-group>
 
-                    </v-list></v-card-text>
+                    </v-list>
+                </div>
                 <v-divider></v-divider>
                 <v-card-actions>
                     <v-spacer></v-spacer>
