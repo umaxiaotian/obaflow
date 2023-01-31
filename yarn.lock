@@ -9773,11 +9773,6 @@ vue-client-only@^2.0.0:
   resolved "https://repo.huaweicloud.com/repository/npm/vue-client-only/-/vue-client-only-2.1.0.tgz#1a67a47b8ecacfa86d75830173fffee3bf8a4ee3"
   integrity sha512-vKl1skEKn8EK9f8P2ZzhRnuaRHLHrlt1sbRmazlvsx6EiC3A8oWF8YCBrMJzoN+W3OnElwIGbVjsx6/xelY1AA==
 
-vue-demi@^0.11.2:
-  version "0.11.4"
-  resolved "https://repo.huaweicloud.com/repository/npm/vue-demi/-/vue-demi-0.11.4.tgz#6101992fe4724cf5634018a16e953f3052e94e2a"
-  integrity sha512-/3xFwzSykLW2HiiLie43a+FFgNOcokbBJ+fzvFXd0r2T8MYohqvphUyDQ8lbAwzQ3Dlcrb1c9ykifGkhSIAk6A==
-
 vue-hot-reload-api@^2.3.0:
   version "2.3.4"
   resolved "https://repo.huaweicloud.com/repository/npm/vue-hot-reload-api/-/vue-hot-reload-api-2.3.4.tgz#532955cc1eb208a3d990b3a9f9a70574657e08f2"
@@ -9862,15 +9857,6 @@ vue-template-es2015-compiler@^1.6.0, vue-template-es2015-compiler@^1.9.0:
   version "1.9.1"
   resolved "https://repo.huaweicloud.com/repository/npm/vue-template-es2015-compiler/-/vue-template-es2015-compiler-1.9.1.tgz#1ee3bc9a16ecbf5118be334bb15f9c46f82f5825"
   integrity sha512-4gDntzrifFnCEvyoO8PqyJDmguXgVPxKiIxrBKjIowvL9l+N66196+72XVYR8BBf1Uv1Fgt3bGevJ+sEmxfZzw==
-
-vue-winbox@0.1.0:
-  version "0.1.0"
-  resolved "https://repo.huaweicloud.com/repository/npm/vue-winbox/-/vue-winbox-0.1.0.tgz#61fa64fa2f90347855fbcb474606b73cb3ef8e97"
-  integrity sha512-JaUnxzBAgyX1tIvjjWkWx0t8psTZG5mAzxz4hsxCvN59grGd1d+f9694Z11wkLI/aRem/9yLQ+PL1viAW+JKVw==
-  dependencies:
-    nanoid "^3.1.23"
-    vue-demi "^0.11.2"
-    winbox "^0.2.0"
 
 vue@^2.6.12, vue@^2.7.10:
   version "2.7.14"
@@ -10106,11 +10092,6 @@ widest-line@^3.1.0:
   integrity sha512-NsmoXalsWVDMGupxZ5R08ka9flZjjiLvHVAWYOKtiKM8ujtZWr9cRffak+uSE48+Ob8ObalXpwyeUiyDD6QFgg==
   dependencies:
     string-width "^4.0.0"
-
-winbox@^0.2.0:
-  version "0.2.6"
-  resolved "https://repo.huaweicloud.com/repository/npm/winbox/-/winbox-0.2.6.tgz#9e46eb23c09394166262e5bcb074e4f240c8ba4c"
-  integrity sha512-P/Tqjcf4bA0Hr1lqR1YliQsisV8xf+t56xgCtqWN8Urw9RLonYSVQGYw+qILp9tgkPs1o7e1dsl6dskaS6GudQ==
 
 word-wrap@~1.2.3:
   version "1.2.3"

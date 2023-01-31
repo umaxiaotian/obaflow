@@ -1,9 +1,11 @@
 <template>
+  <v-app id="app">
   <div style="width:100vw;height:100vh">
     <MainBar v-model="editor"/>
     <hint-overlay />
     <baklava-editor :plugin="viewPlugin"></baklava-editor>
   </div>
+</v-app>
 </template>
 <style lang="scss" >
 .ExecNode {
@@ -33,7 +35,6 @@ import { OptionPlugin } from "@baklavajs/plugin-options-vue"
 import { InterfaceTypePlugin } from "@baklavajs/plugin-interface-types"
 //NodeComponentからエントリしているコンポーネント一覧
 import { PlayNode, ButtonNode, DataCopyNode, DebugNode,ExecNode } from '@/components/NodeComponents'
-import { useWinBox } from 'vue-winbox'
 import ButtonOption from "@/components/ButtonOption.vue";
 import MainBar from "@/components/MainBar";
 import HintOverlay from "@/components/HintOverlay.vue";
@@ -48,7 +49,8 @@ export default {
       intfTypePlugin: new InterfaceTypePlugin(),
       options: {
         title: 'テストウィンドウ',
-      }
+      },
+      dialog: false,
     }
   },
   created() {
@@ -86,34 +88,7 @@ export default {
     // .addConversion("any", "boolean", Boolean);
   },
   mounted() {
-    //ライブラリ呼び出し
-    // const createWindow = useWinBox()
-    // const welcome_window = createWindow({
-    //   title: 'obaflowスタートページ',
-    //   url: 'https://obaflow.umaxiaotian.com/welcome/',
-    //   background: "#454545",
-    //   width: 640,//windowの横幅
-    //   border: 1,
-    //   height: "70%",//windowの縦幅
-    //   // position:
-    //   x: "center",
-    //   y: "center",
-    //   onfocus: function () {
-    //     //windowにフォーカスが当たった時の処理
-    //     this.setBackground("#0081f0");//バーの色を緑にする
-    //   },
-    //   onblur: function () {
-    //     //windowからフォーカスが外れた時の処理
-    //     this.setBackground("#999");//バーの色をグレーにする
-    //   },
-    //   onclose: function () {
-    //     //windowを閉じる時の処理
-    //     if (confirm("ウェルカムウィンドウを閉じますか?")) {
-    //       return false;
-    //     };
-    //     return true;
-    //   },
-    // }).removeControl("wb-max").removeControl("wb-full");
+    
   },
   methods: {
     // menuFunc(event) {
