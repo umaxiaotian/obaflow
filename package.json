@@ -5,6 +5,7 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
+    "patch": "patch-package",
     "postinstall": "nuxt prepare"
   },
   "devDependencies": {
@@ -19,6 +20,7 @@
     "@popperjs/core": "^2.11.6",
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
+    "patch-package": "^6.5.1",
     "sass": "^1.58.0",
     "scss": "^0.2.4"
   }
