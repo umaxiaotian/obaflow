@@ -4,6 +4,7 @@
     "build": "nuxt build",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
+    "pregen": "nuxt generate",
     "preview": "nuxt preview",
     "patch": "patch-package",
     "postinstall": "nuxt prepare"

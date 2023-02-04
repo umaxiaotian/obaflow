@@ -1,6 +1,6 @@
 <template>
     <div class="hint">
-        <h4>obaflow Build:2023-01-23</h4><br>
+        <h4>obaflow Build:{{ $config.public.RELEASE_DATE }} With Nuxt3</h4><br>
         右クリックで新しいノードを追加できます。<br />
         ノード同士を線で接続したり、削除したりできます。
         <br />
@@ -8,6 +8,7 @@
         このプロジェクト(Obaflow)はまだ開発段階です...
     </div>
 </template>
+
 
 <style>
 .hint {
