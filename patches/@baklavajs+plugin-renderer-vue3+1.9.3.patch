@@ -1,5 +1,5 @@
 diff --git a/node_modules/@baklavajs/plugin-renderer-vue3/dist/index.js b/node_modules/@baklavajs/plugin-renderer-vue3/dist/index.js
-index 0e33f18..dae4b81 100644
+index 0e33f18..4cd324c 100644
 --- a/node_modules/@baklavajs/plugin-renderer-vue3/dist/index.js
 +++ b/node_modules/@baklavajs/plugin-renderer-vue3/dist/index.js
 @@ -1592,16 +1592,16 @@ var EditorView = /** @class */ (function (_super) {
@@ -22,3 +22,14 @@ index 0e33f18..dae4b81 100644
                  value: "paste",
                  disabledFunction: function () { return _this.clipboard.isEmpty; },
              },
+@@ -2058,8 +2058,8 @@ var NodeView = /** @class */ (function (_super) {
+             x: 0,
+             y: 0,
+             items: [
+-                { value: "rename", label: "Rename" },
+-                { value: "delete", label: "Delete" },
++                { value: "rename", label: "名前を変更" },
++                { value: "delete", label: "削除" },
+             ],
+         };
+         return _this;
