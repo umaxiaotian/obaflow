@@ -18,7 +18,6 @@ export class ExecNode extends Node {
         const message = "PLAY(IN)を実行"
         this.setOptionValue('OUT-MSG', message);
         console.log(this.getInterface('PLAY(IN)').value)
-
     }
 }
 

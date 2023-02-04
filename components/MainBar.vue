@@ -32,7 +32,7 @@
                 </ul>
             </div>
         </div>
-        <v-dialog dark persistent scrollable v-model="dialog" width="700">
+        <!-- <v-dialog dark persistent scrollable v-model="dialog" width="700">
             <v-card>
                 <v-card-title class="text-h5 blue ">
                     ファイル
@@ -225,7 +225,7 @@
                     </v-btn>
                 </v-card-actions>
             </v-card>
-        </v-dialog>
+        </v-dialog> -->
     </div>
 </template>
 
@@ -287,27 +287,16 @@
 <script>
 import "bootstrap/dist/js/bootstrap.min.js";
 import { Tooltip } from 'bootstrap/dist/js/bootstrap.esm.min.js'
+
+
+
 export default {
     name: "MainBar",
-    model: {
-        prop: "editor",
-        event: "change",
-    },
+    //v-model処理
     props: {
-        editor: {
-            type: Object
-        }
+        modelValue: String // 以前は `value:String` でした
     },
-    computed: {
-        applyEditor: {
-            get() {
-                return this.editor;
-            },
-            set(newValue) {
-                this.$emit("change", newValue);
-            },
-        },
-    },
+    emits: ['update:modelValue'],
 
     data() {
         return {
@@ -317,6 +306,7 @@ export default {
                 'openFileManager': { iconClass: 'bi bi-card-list', isActive: false, funcName: 'openFileManager', toolTipText: "ファイルマネージャーを表示します。" }
             },
             dialog: false,
+            editor: this.modelValue
         }
     },
 
@@ -328,10 +318,12 @@ export default {
 
     methods: {
         menuClickFunc(event) {
+            var state = {}
             switch (event) {
                 //SaveEvent発火
                 case 'saveEditorInfo':
-                    let state = JSON.stringify(this.editor.save());
+                    console.log(this.editor)
+                    state = JSON.stringify(this.editor.save());
                     console.log(state);
                     this.menuList.test.isActive = true;
                     break

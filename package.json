@@ -1,38 +1,25 @@
 {
-  "name": "obaflow",
-  "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
     "build": "nuxt build",
-    "start": "nuxt start",
+    "dev": "nuxt dev",
     "generate": "nuxt generate",
-    "test": "jest",
-    "postinstall": "patch-package"
-  },
-  "dependencies": {
-    "@linusborg/vue-simple-portal": "^0.1.5",
-    "@nuxtjs/axios": "^5.13.6",
-    "@popperjs/core": "^2.11.6",
-    "@vue/composition-api": "^1.7.1",
-    "baklavajs": "^1.10.2",
-    "bootstrap": "^5.2.3",
-    "bootstrap-icons": "^1.10.3",
-    "core-js": "^3.25.3",
-    "lazysizes": "^5.3.2",
-    "nuxt": "^2.15.8",
-    "vue": "^2.7.10",
-    "vue-server-renderer": "^2.7.10",
-    "vue-template-compiler": "^2.7.10"
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare"
   },
   "devDependencies": {
-    "@nuxtjs/vuetify": "^1.12.3",
-    "@vue/test-utils": "^1.3.0",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-jest": "^29.1.2",
-    "jest": "^29.1.2",
-    "jest-environment-jsdom": "^29.1.2",
-    "patch-package": "^6.5.1",
-    "vue-jest": "^3.0.4"
+    "nuxt": "^3.1.2"
+  },
+  "dependencies": {
+    "@baklavajs/core": "^1.10.2",
+    "@baklavajs/plugin-engine": "^1.10.2",
+    "@baklavajs/plugin-interface-types": "^1.10.2",
+    "@baklavajs/plugin-options-vue3": "^1.9.3",
+    "@baklavajs/plugin-renderer-vue3": "^1.9.3",
+    "@popperjs/core": "^2.11.6",
+    "bootstrap": "^5.2.3",
+    "bootstrap-icons": "^1.10.3",
+    "sass": "^1.58.0",
+    "scss": "^0.2.4"
   }
 }
